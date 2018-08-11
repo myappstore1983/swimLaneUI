@@ -1,0 +1,82 @@
+<!-- <table class="table table-striped table-bordered">
+  <thead>
+      <tr>
+          <th>Code</th>
+          <th>Name</th>
+          <th>Price</th>
+          <th>Action</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr *ngFor="let field of fieldArray; let i = index">
+          <td>
+              <input [(ngModel)]="field.code" class="form-control" type="text" name="{{field.code}}" />
+          </td>
+          <td>
+              <input [(ngModel)]="field.name" class="form-control" type="text" name="{{field.name}}" />
+          </td>
+          <td>
+              <input [(ngModel)]="field.price" class="form-control" type="text" name="{{field.price}}" />
+          </td>
+          <td>
+              <button class="btn btn-default"  type="button" (click)="deleteFieldValue(i)">Delete</button>
+          </td>
+      </tr>
+      <tr>
+          <td>
+              <input class="form-control" type="text" id="newAttributeCode" [(ngModel)]="newAttribute.code" name="newAttributeCode" />
+          </td>
+          <td>
+              <input class="form-control" type="text" id="newAttributeName" [(ngModel)]="newAttribute.name" name="newAttributeName" />
+          </td>
+          <td>
+              <input class="form-control" type="text" id="newAttributePrice" [(ngModel)]="newAttribute.price" name="newAttributePrice" />
+          </td>
+          <td>
+              <button class="btn btn-default" type="button" (click)="addFieldValue()">Add</button>
+          </td>
+      </tr>
+  </tbody>
+</table> -->
+
+<hr>
+<div class="col-sm-5 col-sm offset-4">
+  <div class="col-sm">
+    <mat-form-field>
+      <mat-select #t (selectionChange)="change(t.value)">
+        <mat-option *ngFor="let lane of lanes" [value]="lane.name">
+          {{lane.name}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+</div>
+<hr>
+<div class="col-sm-5 col-sm offset-4">
+  <table border="1" id="mtable">
+    <thead>
+      <tr>
+        <td *ngFor="let field of columnArray">{{field}}</td>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- <tr *ngFor="let field of rowArray" id="row{{1+i}}"> -->      
+        <tr *ngFor="let rowf of rowArray; let r = index">
+          <td *ngFor="let colf of columnArray; let c = index">
+            <p >{{r}} {{colf}} {{c}} </p>
+            <ng-template #otherRows>
+                col{{c+1}}
+            </ng-template>      
+          </td>
+        </tr>
+    </tbody>
+  </table>
+  <br/>
+  <br/>
+  <input id="row" placeholder="Enter Item Name" />
+  <button id="irow" (click)="addRow()">Insert Row</button>
+  <br/>
+  <br/>
+  <input id="col" placeholder="Enter Heading" />
+  <button id="icol" (click)="addColumn()">Insert Column</button>
+</div>
